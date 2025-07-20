@@ -1,32 +1,29 @@
-import React from "react"
-import logo from "./logo.svg"
+import React, { useState } from "react"
 import "./App.css"
+import LocationListingComponent from "./components/listing/listing-component"
+import PhotoPicker from "./components/photo-picker/photo-picker"
+
+import GPSProvider from "./context/gps-provider"
 
 function App() {
+  //TODO
+  //* choose color theme as well
+  //* find out how to get country name from exif gps data
+
+  // photo picker needs to send its data to location listing component
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload
-        </p>
-        <input
-          type="file"
-          name="image"
-          onChange={(event: any) => {
-            console.log(event.target.files[0])
-          }}
-        />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GPSProvider>
+        <div>
+          <LocationListingComponent />
+        </div>
+
+        <div>
+          <PhotoPicker />
+        </div>
+      </GPSProvider>
+    </>
   )
 }
 
